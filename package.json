@@ -2,7 +2,7 @@
   "name": "music_site",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://li-matthew.github.io/music_site",
+  "homepage": "https://li-matthew.github.io/music",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
