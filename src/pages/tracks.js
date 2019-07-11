@@ -350,15 +350,23 @@ const data = [
 // }
 // }
 
+function pauseSong() {
+	var i;
+	document.getElementById('p').innerHTML = "HI";
+	for (i = 0; i < 32; i++) {
+		document.getElementById(data[i].id).pause();
+	}
+}
 
 const List = () => (
-	<Carousel interval={null}>
+	<Carousel interval={null} onSelect={pauseSong}>
     {data.map(item => (
     	<Carousel.Item>
       <div key={item.id} id='songs'>
         <div className='songtitle'>{item.id}</div>
         <audio id={item.id} className="tracks" controls src={item.src}></audio>
         <div id="canvas-small">
+
 				<AudioSpectrum
 				  id={item.canvas}
 				  height={100}
@@ -413,6 +421,7 @@ export default function Tracks(props) {
 	return (
 		<div>
 			<div className='title'>
+			<p id='p'>hi</p>
 				<h2>Tracks</h2>
 			</div>
 			<List />
