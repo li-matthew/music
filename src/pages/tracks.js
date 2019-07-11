@@ -1,5 +1,6 @@
 import React from 'react'
 import AudioSpectrum from 'react-audio-spectrum'
+import Carousel from 'react-bootstrap/Carousel'
 import one from '../media/01.mp3'
 import two from '../media/02.mp3'
 import three from '../media/03.mp3'
@@ -52,6 +53,8 @@ import beat_027 from '../media/beat_027.mp3'
 import beat_028 from '../media/beat_028.mp3'
 import beat_029 from '../media/beat_029.mp3'
 import beat_030 from '../media/beat_030.mp3'
+import beat_031 from '../media/beat_031.mp3'
+import beat_032 from '../media/beat_032.mp3'
 
 var CSS_COLOR_NAMES = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","Darkorange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","GoldenRod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"];
 
@@ -317,6 +320,16 @@ const data = [
 	id: 'beat_030',
 	canvas: 'canvasbeat_030',
 	src: beat_030,
+},
+{
+	id: 'beat_031',
+	canvas: 'canvasbeat_031',
+	src: beat_031,
+},
+{
+	id: 'beat_032',
+	canvas: 'canvasbeat_032',
+	src: beat_032,
 },];
 
 // window.onload = function() {
@@ -339,7 +352,35 @@ const data = [
 
 
 const List = () => (
-  <ul>
+	<Carousel interval={null}>
+    {data.map(item => (
+    	<Carousel.Item>
+      <div key={item.id} id='songs'>
+        <div className='songtitle'>{item.id}</div>
+        <audio id={item.id} className="tracks" controls src={item.src}></audio>
+        <div id="canvas-small">
+				<AudioSpectrum
+				  id={item.canvas}
+				  height={100}
+				  width={window.innerWidth * 0.40}
+				  audioId={item.id}
+				  capColor={CSS_COLOR_NAMES[Math.floor(Math.random() * 141)]}
+				  capHeight={1}
+				  meterWidth={1}
+				  meterCount={1024}
+				  meterColor={[
+				    {stop: 0, color: CSS_COLOR_NAMES[Math.floor(Math.random() * 141)]},
+				    {stop: 0.5, color: CSS_COLOR_NAMES[Math.floor(Math.random() * 141)]},
+				    {stop: 1, color: CSS_COLOR_NAMES[Math.floor(Math.random() * 141)]}
+				  ]}
+				  gap={4}
+				/>
+				</div>
+      </div>
+      </Carousel.Item>
+    ))}
+	</Carousel>
+  /*<ul>
     {data.map(item => (
       <div key={item.id} id='songs'>
         <div class='songtitle'>{item.id}</div>
@@ -364,7 +405,7 @@ const List = () => (
 				</div>
       </div>
     ))}
-  </ul>
+  </ul> */
 );
 
 

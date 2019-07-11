@@ -84,7 +84,8 @@ div {
 }
 
 .tracks {
-	width: 500px;
+	width: 35%;
+	margin-bottom: 35px;
 }
 
 #canvas {
@@ -95,6 +96,10 @@ div {
     margin-bottom: 0;
     bottom: 0;
 	position: absolute;
+}
+
+.carousel {
+	height: 350px;
 }
 
 ul {
